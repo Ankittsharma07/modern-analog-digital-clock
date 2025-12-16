@@ -8,7 +8,7 @@ const ampm = document.getElementById('ampm');
 function updateClock() {
     const now = new Date();
 
-//Time Part
+    //Time Part
     let hours = now.getHours();
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();

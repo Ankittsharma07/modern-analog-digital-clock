@@ -56,7 +56,7 @@ body {
 }
 
 /* Numbers (12, 3, 6, 9) Positioning */
-.clock span {
+.clock .number {
     position: absolute;
     inset: 20px;
     color: #fff;
@@ -65,7 +65,7 @@ body {
     /* Note: JS se calculation ki zarurat nahi, CSS variable use kiya hai positioning ke liye */
 }
 
-.clock span b {
+.clock .number b {
     font-size: 1.5em;
     margin-left: -10.15px;
     position: absolute;
@@ -184,11 +184,23 @@ body {
     letter-spacing: 2px;
     color: #ffffff;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    font-variant-numeric: tabular-nums;
+    min-width: 220px;
+    text-align: center;
 }
 
 #ampm {
-    font-size: 0.5em;
+    position: absolute;
+    bottom: -6px;
+    letter-spacing: 3px;
+    margin-left: 2.6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1em;
+    font-weight: 700;
     color: #00d9ff;
+    text-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff;
+    z-index: 10;
 }
 
 #date {

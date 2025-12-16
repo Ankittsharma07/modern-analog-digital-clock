@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Analog + Digital Clock</title>
     <link rel="stylesheet" href="style.css">
     <!-- Importing cool font for Digital Clock -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <div class="container">
         <!-- Main Clock Body -->
         <div class="clock">
-            
+
             <!-- Glowing Outer Ring (Decorative) -->
             <div class="outer-ring"></div>
 
             <!-- Clock Face Numbers (Minimalist) -->
-            <span style="--i:12;"><b>12</b></span>
-            <span style="--i:3;"><b>3</b></span>
-            <span style="--i:6;"><b>6</b></span>
-            <span style="--i:9;"><b>9</b></span>
+            <span class="number" style="--i:12;"><b>12</b></span>
+            <span class="number" style="--i:3;"><b>3</b></span>
+            <span class="number" style="--i:6;"><b>6</b></span>
+            <span class="number" style="--i:9;"><b>9</b></span>
 
             <!-- Clock Hands -->
             <!-- JS se inki rotation change karni hogi -->
@@ -34,12 +37,16 @@
 
             <!-- Digital Clock Display -->
             <div class="digital-clock">
-                <div id="time">12:30:45 <span id="ampm">AM</span></div>
+                <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+                    <span id="time">12:30:45</span>
+                    <span id="ampm">AM</span>
+                </div>
                 <div id="date">Mon, 15 Dec</div>
             </div>
         </div>
     </div>
-    
+
     <script src="index.js"></script>
 </body>
+
 </html>
