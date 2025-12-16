@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #2d2f40;
+    /* Dark Background */
+}
+
+/* Container to handle layout */
+.container {
+    position: relative;
+    background: #2d2f40;
+    /* Soft neumorphic shadow behind the clock area */
+    border-radius: 50%;
+    box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+        10px 10px 70px rgba(0, 0, 0, 0.25),
+        inset -5px -5px 15px rgba(0, 0, 0, 0.5),
+        inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* The Circular Clock */
+.clock {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    background: #2d2f40;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 8px solid #2d2f40;
+    box-shadow: -10px -10px 25px rgba(255, 255, 255, 0.05),
+        10px 10px 25px rgba(0, 0, 0, 0.5),
+        inset 10px 10px 20px rgba(0, 0, 0, 0.5),
+        inset -10px -10px 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Decoration: Glowing Ring inside */
+.clock::before {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+/* Numbers (12, 3, 6, 9) Positioning */
+.clock span {
+    position: absolute;
+    inset: 20px;
+    color: #fff;
+    text-align: center;
+    transform: rotate(calc(90deg * var(--i)));
+    /* Note: JS se calculation ki zarurat nahi, CSS variable use kiya hai positioning ke liye */
+}
+
+.clock span b {
+    font-size: 1.5em;
+    margin-left: -10.15px;
+    position: absolute;
+    display: inline-block;
+    color: #00d9ff;
+    /* Cyan Color */
+    text-shadow: 0 0 10px #00d9ff;
+    transform: rotate(calc(-90deg * var(--i)));
+    /* Counter rotate to keep text straight */
+}
+
+/* Center Dot */
+.center-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 10;
+    border: 2px solid #00d9ff;
+}
+
+/* --- HANDS Styling --- */
+.hand {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Pivot at bottom */
+}
+
+.hand i {
+    position: absolute;
+    background-color: var(--clr);
+    width: 4px;
+    height: var(--h);
+    border-radius: 4px;
+}
+
+/* Hour Hand */
+.hour {
+    width: 8px;
+    height: 80px;
+    /* Length from center */
+    top: calc(50% - 80px);
+    /* Adjust positioning */
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%);
+    /* Start position */
+    z-index: 8;
+}
+
+.hour i {
+    width: 6px;
+    height: 80px;
+    background: #ff2972;
+    /* Pink */
+}
+
+/* Minute Hand */
+.min {
+    width: 4px;
+    height: 100px;
+    top: calc(50% - 100px);
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%);
+    z-index: 9;
+}
+
+.min i {
+    width: 4px;
+    height: 100px;
+    background: #fee800;
+    /* Yellow */
+}
+
+/* Second Hand */
+.sec {
+    width: 2px;
+    height: 120px;
+    top: calc(50% - 120px);
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%);
+    z-index: 11;
+    transition: transform 0.05s cubic-bezier(0.1, 2.7, 0.58, 1);
+    /* Above center dot */
+}
+
+.sec i {
+    width: 2px;
+    height: 120px;
+    background: #04fc43;
+    /* Bright Green */
+    box-shadow: 0 0 10px #04fc43;
+}
+
+/* --- DIGITAL CLOCK Styling --- */
+.digital-clock {
+    position: absolute;
+    bottom: 55px;
+    /* Positioned below center */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    z-index: 5;
+}
+
+#time {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#ampm {
+    font-size: 0.5em;
+    color: #00d9ff;
+}
+
+#date {
+    margin-top: 5px;
+    font-size: 0.75em;
+    letter-spacing: 1px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 400px) {
+    .clock {
+        width: 280px;
+        height: 280px;
+    }
+
+    #time {
+        font-size: 1.4em;
+    }
+
+    .clock span b {
+        font-size: 1.2em;
+    }
+}
